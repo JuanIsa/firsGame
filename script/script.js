@@ -47,6 +47,13 @@ function reducir() {
 start();
 function start(){
     /*===============================================================================================
+    DIBUJO Y MANEJO DEL CANVA
+    ================================================================================================*/
+    const canva = document.querySelector("#lienzo");
+    //definición del contexto del canva
+    const ctx = canva.getContext("2d");
+    
+    /*===============================================================================================
     CARGA DE FONDOS DEL CANVA
     ================================================================================================*/
     //Instancio el objeto imageno que va a ir en el canvas
@@ -56,12 +63,19 @@ function start(){
     //Cargo la imagen en el contexto del canva ni bien se carga la página
     fondo.onload = function() {
         ctx.drawImage(fondo,0,0,1300,779,0,0,1000,470);
+        ctx.fillText("Si no aparecen los botones de control de juego recarga la página.", 500,200); 
     }
+    ctx.font="25px Arial";
+    ctx.fillStyle="black";
+    ctx.textAlign="center";
+        
     const fondo1 = new Image();
     fondo1.src = "img/fondo1.jpg";
     fondo1.onload = function() {
         ctx.drawImage(fondo1,0,0,1300,779,1000,0,1000,470);
     }
+    
+    
     /*===============================================================================================
     Personaje DEL CANVA
     ================================================================================================*/
@@ -189,31 +203,23 @@ function start(){
             altura=220;
         }, tiempoSalto);
     }
-
-    /*===============================================================================================
-    DIBUJO Y MANEJO DEL CANVA
-    ================================================================================================*/
-    const canva = document.querySelector("#lienzo");
-    //definición del contexto del canva
-    const ctx = canva.getContext("2d");
-    /*requestAnimationFrame  vendria a reemplazar al setInterval (acción, tiempo de accion en ms)
-        y al setTimeout(acción, tiempo de accion en ms)
-        requestAnimationFrame es una función optimizada de animaciones para navegadores de escritorio
-        que funciona a 60FPS*/
-    const frame = window.requestAnimationFrame;
+    
 
     /*===============================================================================================
     FUNCIONES DE ANIMACIÓN
     ================================================================================================*/
+    /*requestAnimationFrame  vendria a reemplazar al setInterval (acción, tiempo de accion en ms)
+    y al setTimeout(acción, tiempo de accion en ms)
+    requestAnimationFrame es una función optimizada de animaciones para navegadores de escritorio
+    que funciona a 60FPS*/
+    const frame = window.requestAnimationFrame;
     //letiable netrual en la que se va a almacenar el estado de la animación
     let animacion;
     //Bandera booleana de control de juego en ejecución
     let bandera=false;
-
     //letiables de control del fondo continuo
     let corrimiento =  0;
     let corrimiento1 =  1000;
-
     let obst=0;
     obst= aleatorio();
     function aleatorio(){

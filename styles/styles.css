@@ -4,12 +4,9 @@
     list-style: none;
     text-decoration: none;
 }
-
 body {
     overflow: hidden;
 }
-
-
 #contenedor button {
     display: block;
     position: relative;
@@ -17,7 +14,6 @@ body {
     padding: 5px;
     cursor: pointer;
 }
-
 #contenedor {
     user-select: none;
     position: relative;
@@ -28,11 +24,9 @@ body {
 #lienzo {
     /* border-radius: 30px; */
 }
-
 #vertical {
     display: none;
 }
-
 @media all and (orientation:portrait) {
     #contenedor {
         display: none;
